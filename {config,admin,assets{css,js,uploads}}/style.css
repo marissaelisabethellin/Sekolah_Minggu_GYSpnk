@@ -1,0 +1,21 @@
+/* ALERT (notifikasi PHP dari server) */
+.alert {
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: .95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.alert--success {
+    background: #e6f9f0;
+    border: 1.5px solid #6fcf97;
+    color: #1a6640;
+}
+
+.alert--error {
+    background: #fff0f0;
+    border: 1.5px solid #f2a0a0;
+    color: #922b2b;
+}

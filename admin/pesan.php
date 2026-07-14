@@ -1,39 +1,4 @@
-<?php
-require_once dirname(__DIR__) . '/config.php';
-require_once dirname(__DIR__) . '/config/db.php';
-require_once dirname(__DIR__) . '/config/auth.php';
 
-requireLogin();
-
-$pdo    = db();
-$action = $_POST['action'] ?? $_GET['action'] ?? '';
-$id     = (int) ($_POST['id'] ?? $_GET['id'] ?? 0);
-
-// ── Proses aksi POST ────────────────────────────────────────
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    verifyCsrf();
-
-    switch ($action) {
-        case 'read':
-            $pdo->prepare('UPDATE pesan SET dibaca = 1, ditangani_oleh = ? WHERE id = ?')
-                ->execute([currentUser()['id'], $id]);
-            setFlash('success', 'Pesan ditandai sudah dibaca.');
-            break;
-
-        case 'unread':
-            $pdo->prepare('UPDATE pesan SET dibaca = 0, ditangani_oleh = NULL WHERE id = ?')->execute([$id]);
-            setFlash('success', 'Pesan ditandai belum dibaca.');
-            break;
-
-        case 'delete':
-            $pdo->prepare('DELETE FROM pesan WHERE id = ?')->execute([$id]);
-            setFlash('success', 'Pesan berhasil dihapus.');
-            break;
-
-        case 'read_all':
-            $pdo->exec('UPDATE pesan SET dibaca = 1');
-            setFlash('success', 'Semua pesan ditandai sudah dibaca.');
-            break;
     }
     header('Location: ' . BASE_URL . '/admin/pesan.php');
     exit;

@@ -1,7 +1,7 @@
 <?php
 
 $password = 'mingguceriaanak';   // ← ganti sesuai password yang diinginkan
-$hash = kata_sandi_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 echo '<pre>';
 echo "Password   : $password\n";

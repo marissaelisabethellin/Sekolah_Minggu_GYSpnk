@@ -13,7 +13,10 @@ $me     = currentUser();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verifyCsrf();
 
-    
+    $nama_pengguna = trim($_POST['nama_pengguna'] ?? '');
+    $nama     = trim($_POST['nama']     ?? '');
+    $peran     = $_POST['peran'] === 'super_admin' ? 'super_admin' : 'admin';
+    $password = $_POST['password'] ?? '';
 
     switch ($action) {
         case 'add':

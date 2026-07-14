@@ -1,35 +1,4 @@
-<?php
-require_once dirname(__DIR__) . '/config.php';
-require_once dirname(__DIR__) . '/config/db.php';
-require_once dirname(__DIR__) . '/config/auth.php';
 
-requireSuperAdmin();  // hanya super_admin
-
-$pdo    = db();
-$action = $_POST['action'] ?? '';
-$id     = (int) ($_POST['id'] ?? $_GET['id'] ?? 0);
-$me     = currentUser();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    verifyCsrf();
-
-    $nama_pengguna = trim($_POST['nama_pengguna'] ?? '');
-    $nama     = trim($_POST['nama']     ?? '');
-    $peran     = $_POST['peran'] === 'super_admin' ? 'super_admin' : 'admin';
-    $password = $_POST['password'] ?? '';
-
-    switch ($action) {
-        case 'add':
-            if (!$nama_pengguna || !$nama || !$password) {
-                setFlash('error', 'Username, nama, dan password wajib diisi.');
-                break;
-            }
-            $existing = $pdo->prepare('SELECT id FROM pengguna WHERE nama_pengguna=?');
-            $existing->execute([$nama_pengguna]);
-            if ($existing->fetch()) {
-                setFlash('error', "Username \"$nama_pengguna\" sudah dipakai.");
-                break;
-            }
             $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
             $pdo->prepare('INSERT INTO pengguna (nama_pengguna,kata_sandi_hash,nama,peran) VALUES (?,?,?,?)')
                 ->execute([$nama_pengguna, $hash, $nama, $peran]);

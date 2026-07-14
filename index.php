@@ -186,7 +186,7 @@ $heroQuote = pisahKutipanHero($heroDeskripsi);
 
 
 <!-- ======================================================
-     JENJANG KELAS — data dari MySQL via $jenjangList
+     JENJANG KELAS 
 ====================================================== -->
 <section id="jenjang" class="section section--lilac">
   <div class="container">
@@ -262,7 +262,7 @@ $heroQuote = pisahKutipanHero($heroDeskripsi);
 
 
 <!-- ======================================================
-     GALERI — data dari MySQL via $galeriList
+     GALERI 
 ====================================================== -->
 <section id="galeri" class="section section--plum">
   <div class="container">

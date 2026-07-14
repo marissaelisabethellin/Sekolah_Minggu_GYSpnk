@@ -1,38 +1,4 @@
-<?php
-// ============================================================
-//  PROCESS_CONTACT.PHP — Validasi + Simpan ke DB + WA
-// ============================================================
 
-require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/config/db.php';
-require_once __DIR__ . '/config/auth.php';
-
-if (session_status() === PHP_SESSION_NONE) session_start();
-
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.php');
-    exit;
-}
-
-// ── Helper ───────────────────────────────────────────────────
-function clean(string $val): string {
-    return htmlspecialchars(trim($val), ENT_QUOTES, 'UTF-8');
-}
-
-function fail(string $msg): never {
-    $_SESSION['form_error']  = $msg;
-    $_SESSION['form_values'] = $_POST;
-    header('Location: index.php#kontak');
-    exit;
-}
-
-// ── Ambil input ──────────────────────────────────────────────
-$name     = clean($_POST['name']     ?? '');
-$age      = trim($_POST['age']       ?? '');
-$gender   = clean($_POST['gender']   ?? '');
-$guardian = clean($_POST['guardian'] ?? '');
-$phone    = trim($_POST['whatsapp']  ?? '');
-$address  = clean($_POST['address']  ?? '');
 $message  = clean($_POST['message']  ?? '');
 
 // ── Validasi ─────────────────────────────────────────────────

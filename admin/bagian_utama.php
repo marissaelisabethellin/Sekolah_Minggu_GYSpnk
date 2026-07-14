@@ -655,21 +655,6 @@ require __DIR__ . '/includes/sidebar.php';
   </div>
 </div>
 
-<script>
-  document.getElementById('sidebarToggle')?.addEventListener('click', () =>
-    document.getElementById('sidebar').classList.toggle('open'));
 
-  const modal = document.getElementById('deleteModal');
-  document.querySelectorAll('.confirm-delete').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById('deleteNama').textContent = btn.dataset.nama;
-      document.getElementById('deleteId').value = btn.dataset.id;
-      modal.classList.add('open');
-    });
-  });
-  document.getElementById('cancelDelete')?.addEventListener('click', () => modal.classList.remove('open'));
-  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
-</script>
 </body>
 </html>

@@ -1,38 +1,4 @@
-<?php
-require_once dirname(__DIR__) . '/config.php';
-require_once dirname(__DIR__) . '/config/db.php';
-require_once dirname(__DIR__) . '/config/auth.php';
 
-requireLogin();
-
-$pdo = db();
-
-/**
- * Upload gambar slide carousel hero.
- * Mengikuti pola uploadJenjang() / uploadGaleri() agar konsisten
- * di seluruh modul CRUD panel admin.
- */
-function uploadHero(array $file): string
-{
-    if ($file['error'] !== UPLOAD_ERR_OK) {
-        throw new RuntimeException('Upload gambar gagal.');
-    }
-
-    if ($file['size'] > 5 * 1024 * 1024) {
-        throw new RuntimeException('Ukuran gambar maksimal 5 MB.');
-    }
-
-    if (!getimagesize($file['tmp_name'])) {
-        throw new RuntimeException('File bukan gambar yang valid.');
-    }
-
-    $allowed = [
-        'image/jpeg' => 'jpg',
-        'image/png'  => 'png',
-        'image/webp' => 'webp'
-    ];
-
-    $mime = mime_content_type($file['tmp_name']);
 
     if (!isset($allowed[$mime])) {
         throw new RuntimeException(

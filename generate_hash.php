@@ -12,7 +12,7 @@ echo '</pre>';
 
 $password = 'smgrj01'; // Password yang diinginkan
 
-$hash = kata_sandi_hash($password, PASSWORD_BCRYPT, [
+$hash = password_hash($password, PASSWORD_BCRYPT, [
     'cost' => 12
 ]);
 

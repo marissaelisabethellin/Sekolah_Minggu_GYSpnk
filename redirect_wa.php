@@ -45,7 +45,7 @@ if (!$waUrl || !str_starts_with($waUrl, 'https://wa.me/')) {
   <script>
     // Buka WhatsApp otomatis, lalu kembali ke halaman utama
     window.open(<?= json_encode($waUrl) ?>, '_blank');
-    setTimeout(() => { window.location.href = 'index.php'; }, 2500);
+    setTimeout(() => { window.location.href = 'index.php'; }, 5000);
   </script>
 </body>
 </html>

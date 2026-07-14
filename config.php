@@ -11,7 +11,7 @@ define('DB_PASS', '');
 
 // ── URL Dasar ────────────────────────
 // Contoh lokal  : http://localhost/sekolah_minggu_gyspnk
-// Contoh hosting: https://gys-pontianak.com
+// Contoh hosting: https://gys-sekolah minggu-pontianak.com
 define('BASE_URL', 'http://localhost/sekolah_minggu_gyspnk');
 
 // ── Informasi Situs ─────────────────────────────────────────

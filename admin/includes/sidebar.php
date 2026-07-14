@@ -48,11 +48,7 @@ $isActive = fn(string $path) =>
 
     <div class="sidebar_section-label" style="margin-top:12px">Konten Website</div>
 
-    <a href="<?= BASE_URL ?>/admin/bagian_utama.php"
-       class="sidebar_link <?= $isActive('admin/bagian_utama') ?>">
-      <span class="material-symbols-outlined">view_carousel</span>
-      Bagian Utama
-    </a>
+    
 
     <a href="<?= BASE_URL ?>/admin/jenjang.php"
        class="sidebar_link <?= $isActive('admin/jenjang') ?>">

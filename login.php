@@ -393,25 +393,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   </div>
 
-  <script>
-    // Toggle show/hide password
-    document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('togglePw');
-    const passwordInput = document.getElementById('password');
-    if(toggleBtn && passwordInput){
-        toggleBtn.addEventListener('click', () => {
-            const isPassword =
-                passwordInput.type === 'password';
-            passwordInput.type =
-                isPassword ? 'text' : 'password';
-            toggleBtn.innerHTML = `
-                <span class="material-symbols-outlined">
-                    ${isPassword ? 'visibility_off' : 'visibility'}
-                </span>
-            `;
-        });
-    }
-});
-  </script>
+ 
 </body>
 </html>

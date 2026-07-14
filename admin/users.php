@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 setFlash('error', "Username \"$nama_pengguna\" sudah dipakai.");
                 break;
             }
-            $hash = kata_sandi_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+            $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
             $pdo->prepare('INSERT INTO pengguna (nama_pengguna,kata_sandi_hash,nama,peran) VALUES (?,?,?,?)')
                 ->execute([$nama_pengguna, $hash, $nama, $peran]);
             setFlash('success', "Pengguna \"$nama\" berhasil ditambahkan.");
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'edit':
             if (!$nama) { setFlash('error', 'Nama wajib diisi.'); break; }
             if ($password) {
-                $hash = kata_sandi_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+                $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
                 $pdo->prepare('UPDATE pengguna SET nama=?,peran=?,kata_sandi_hash=? WHERE id=?')
                     ->execute([$nama, $peran, $hash, $id]);
             } else {

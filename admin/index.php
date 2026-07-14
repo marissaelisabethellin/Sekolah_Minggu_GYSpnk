@@ -160,11 +160,6 @@ require __DIR__ . '/includes/sidebar.php';
   </div>
 </div>
 
-<script>
-  const sidebar = document.getElementById('sidebar');
-  document.getElementById('sidebarToggle')?.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-  });
-</script>
+
 </body>
 </html>

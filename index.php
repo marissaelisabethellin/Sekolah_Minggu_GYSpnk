@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-//  INDEX.PHP — Halaman Utama (data dari MySQL)
+//  INDEX.PHP — Halaman Utama 
 // ============================================================
 
 if (session_status() === PHP_SESSION_NONE) session_start();
